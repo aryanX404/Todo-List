@@ -1,0 +1,87 @@
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    /* gap: 20px; */
+
+}
+
+.input-task{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* margin-top: 20px; */
+}
+
+.input-task input{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 20px;
+    /* margin-bottom: 20px; */
+}
+
+.input-task button{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+.task-container{
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 600px;
+    padding: 0px 10px;
+    
+}
+
+.task{
+    background-color: #ccccccd7;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    padding: 0 20px;
+    /* border-bottom: 1px solid #ccc; */
+}
+
+.checkbox{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.task span{
+    flex: 1;
+}
+
+.delete-button{
+    margin-left: auto;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    position: end;
+    cursor: pointer;
+}
