@@ -38,14 +38,14 @@
 
 .task-container{
     margin-top: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     display: flex;
     flex-direction: column;
     height: 300px;
     align-items: center;
     justify-content: flex-start;
     width: 600px;
-    padding: 0px 10px;
+    padding: 0px 25px;
     
 }
 
