@@ -26,6 +26,12 @@
     /* margin-bottom: 20px; */
 }
 
+.input-task input:focus {
+  outline: none; /* Removes the default outline */
+  border: 1px solid #28a745; 
+  box-shadow: 0px 0px 18px #28a745; /* Creates the blue glow effect */
+}
+
 .input-task button{
     width: 100px;
     height: 40px;

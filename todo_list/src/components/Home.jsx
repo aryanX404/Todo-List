@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Home.css'
 
 export default function Home() {
+  const [task, setTask] = useState('Add task');
+  async function handleAddTask() {
+    
+  }
   return (
     <>
     <div className="home">
@@ -9,8 +13,15 @@ export default function Home() {
       <p>Manage your tasks efficiently!</p>
 
       <div className="input-task">
-        <input type="text" placeholder='Add task'/>
-        <button className='add-btn'>Add</button>
+        <input 
+        type="text" 
+        value={task}
+        onChange={(e)=>setTask(e.target.value)}/>
+
+        <button 
+        className='add-btn'
+        onClick={handleAddTask}
+        >Add</button>
       </div>
 
       <div className="task-container">
