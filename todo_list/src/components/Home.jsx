@@ -29,7 +29,8 @@ export default function Home() {
         task
       })
       console.log('todo created', response.data);
-      setTask('')
+      setTask('');
+      handleGetTodos();
     }catch(error){
       console.log('error while creating todo', error.message)
     }
