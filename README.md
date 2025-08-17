@@ -11,6 +11,7 @@ This app helps you stay productive by allowing you to add, update, and delete yo
 - 🗑️ Delete tasks  
 - 🔄 Instant update without page refresh  
 - 📦 Data stored in MongoDB (persistent storage)  
+-    Filtyer by date
 - 🎨 Clean and responsive UI  
 
 ---
