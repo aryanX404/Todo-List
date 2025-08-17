@@ -2,6 +2,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* font-family: "Francois One", sans-serif; */
+    /* font-family: "Yeseva One", serif; */
+    /* font-family: "Merriweather Sans", sans-serif; */
+    /* font-family: "Poppins", sans-serif; */
 }
 
 .home{
@@ -14,7 +18,25 @@
 
 }
 
+.navbar{
+    height: 80px;
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+p.title{
+    font-family: "Yeseva One", serif;
+    width: max-content;
+    color: var(--title-color);
+    font-size: 1.8rem;
+    margin-left: 10px;
+}
 .heading{
+    font-family: "Yeseva One", serif;
     font-size: 3rem;
     color: #333;
     /* margin-bottom: 20px;
@@ -23,6 +45,7 @@
 }
 
 .sub-heading{
+    font-family: "Yeseva One", serif;
     font-size: 1.5rem;
     color: black;
     margin-bottom: 20px;
@@ -40,8 +63,16 @@
     /* margin-top: 20px; */
 }
 
-.input-task input{
+.input-task input:not([type="date"]){
     width: 400px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 20px;
+    /* margin-bottom: 20px; */
+}
+.input-task input[type="date"]{
+    width: 200px;
     height: 40px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -51,8 +82,8 @@
 
 .input-task input:focus {
   outline: none; /* Removes the default outline */
-  border: 1px solid #28a745; 
-  box-shadow: 0px 0px 18px #28a745; /* Creates the blue glow effect */
+  border: 1px solid var(--primary-color); 
+  box-shadow: 0px 0px 18px var(--primary-color); /* Creates the blue glow effect */
 }
 
 .input-task button{
@@ -60,13 +91,13 @@
     height: 40px;
     border-radius: 5px;
     border: none;
-    background-color: green;
+    background-color: var(--primary-color);
     color: white;
     cursor: pointer;
 }
 
 .add-btn:hover{
-    background-color: #28a745;
+    background-color: var(--primary-color);
     color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -94,13 +125,13 @@
 }
 
 .nav-btn .btn:hover{
-    background-color: green;
-    color: white;
+    border-color: var(--primary-color);
+    color:var(--secondary-color);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .active{
-    background-color: green;
+    background-color: var(--primary-color);
     color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
@@ -143,7 +174,7 @@
     position: relative;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.249);
-    height: 50px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     padding: 5px 0px;
@@ -161,6 +192,13 @@
 .strike {
   text-decoration: line-through;
   color: gray; /* optional: make completed tasks look faded */
+}
+
+.no-todos {
+  text-align: center;
+  font-style: italic;
+  color: gray;
+  margin-top: 1rem;
 }
 
 .task span{

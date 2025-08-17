@@ -7,6 +7,12 @@ export default function Home() {
   const [todos, setTodos] = useState([]);
   const [active, setActive] = useState('all');
 
+  const [selectedDate, setSelectedDate] = useState(() => {
+  const today = new Date();
+  return today.toISOString().split('T')[0]; // "YYYY-MM-DD" format
+  });
+
+
   
   const handleClickAll = () => setActive('all')
   const handleClickTodo = () =>setActive('todo')
@@ -16,14 +22,21 @@ export default function Home() {
   async function handleGetTodos() {
     try{
       const response = await axios.get('http://localhost:8000/');
+      //filter todos by date
+      const filteredTodos = response.data.todos.filter((todo)=>{
+        const todoDate = new Date(todo.date).toISOString().split('T')[0];
+        return todoDate === selectedDate;
+      })
+      
+
       if(active === 'all') {
-        setTodos(response.data.todos);
+        setTodos(filteredTodos);
       }
       else if(active==='completed'){
-        setTodos(response.data.todos.filter(todo=>todo.completed===true));
+        setTodos(filteredTodos.filter(todo=>todo.completed===true));
       }
       else if(active === 'todo'){
-        setTodos(response.data.todos.filter(todo=>todo.completed===false));
+        setTodos(filteredTodos.filter(todo=>todo.completed===false));
       }
   
       // console.log('todos fetched', response.data.todos);
@@ -59,7 +72,7 @@ export default function Home() {
     
   useEffect(() => {
     handleGetTodos();
-  }, [active]);
+  }, [active, selectedDate]);
 
 
   async function handleAddTask() {
@@ -77,6 +90,9 @@ export default function Home() {
   return (
     <>
     <div className="home">
+      <div className="navbar">
+        <p className='title'>STUDY-MODE</p>
+      </div>
       <h1 className='heading'>Welcome to the Todo List App</h1>
       <p className='sub-heading'>Manage your tasks efficiently!</p>
 
@@ -91,6 +107,16 @@ export default function Home() {
         className='add-btn'
         onClick={handleAddTask}
         >Add</button>
+        <div className="date-picker">
+          <label>Select Date: </label>
+          <input 
+            type="date" 
+            value={selectedDate} 
+            max={new Date().toISOString().split("T")[0]} // prevents future dates selection
+            onChange={(e) => setSelectedDate(e.target.value)} 
+          />
+        </div>
+
       </div>
       
       <div className="nav-btn">
@@ -111,7 +137,10 @@ export default function Home() {
           </button>
       </div>
       <div className="task-container">
-        {todos.map((todo) => (
+        {todos.length === 0? (
+          <p className="no-todos">You have no todos for this date.</p>
+        ):
+        (todos.map((todo) => (
           <div className="task" key={todo._id}>
             <input 
             className='checkbox' 
@@ -121,12 +150,18 @@ export default function Home() {
             readOnly />
             <span className={todo.completed?"strike":""}>{todo.task}</span>
             {/* <i className="fa-solid fa-pen update-icon"></i> */}
+            <small>{new Date(todo.date).toLocaleTimeString([], { 
+              hour: '2-digit', 
+              minute: '2-digit', 
+              hour12:true
+              })}</small>
             <i className="fa-regular fa-trash-can delete-icon" onClick={()=>handleDelete(todo._id)}></i>
           </div>
-        ))}
+        )))
+        }
       </div>
       <footer className="footer">
-        <p>© 2025 Graceful Gleam. All rights reserved.</p>
+        <p>© 2025 Aryan. All rights reserved.</p>
       </footer>
 
     </div>
