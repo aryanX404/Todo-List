@@ -1,12 +1,12 @@
 import React, {useState, useEffect, use} from 'react'
 import axios from 'axios'
 import './Home.css'
+import Clock from '../components/Clock.jsx'
 
 export default function Home() {
   const [task, setTask] = useState('');
   const [todos, setTodos] = useState([]);
   const [active, setActive] = useState('all');
-
   const [selectedDate, setSelectedDate] = useState(() => {
   const today = new Date();
   return today.toISOString().split('T')[0]; // "YYYY-MM-DD" format
@@ -92,6 +92,7 @@ export default function Home() {
     <div className="home">
       <div className="navbar">
         <p className='title'>STUDY-MODE</p>
+        <Clock />
       </div>
       <h1 className='heading'>Welcome to the Todo List App</h1>
       <p className='sub-heading'>Manage your tasks efficiently!</p>
@@ -148,7 +149,12 @@ export default function Home() {
             checked={todo.completed}
             onClick={()=>handleCheck(todo._id)} 
             readOnly />
-            <span className={todo.completed?"strike":""}>{todo.task}</span>
+            <span 
+            className={todo.completed?"strike":""}
+            onClick={()=>handleCheck(todo._id)}
+            >
+              {todo.task}
+            </span>
             {/* <i className="fa-solid fa-pen update-icon"></i> */}
             <small>{new Date(todo.date).toLocaleTimeString([], { 
               hour: '2-digit', 

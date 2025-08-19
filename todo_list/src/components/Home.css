@@ -25,7 +25,7 @@
     width: 100%;
     background-color: var(--primary-color);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
 
 }
@@ -181,6 +181,11 @@ p.title{
     display: flex;
     align-items: center;
     padding: 5px 0px;
+}
+
+.task span:hover{
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 
